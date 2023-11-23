@@ -11,12 +11,13 @@ def main():
     
     if base.DEBUG:
         os.environ.setdefault(
-            "DJANGO_SETTINGS_MODULE", "project.settings.base"
-        )  # update settings file to base.py in settings folder
+            "DJANGO_SETTINGS_MODULE", "project.settings.local"
+        )
     else:
         os.environ.setdefault(
             "DJANGO_SETTINGS_MODULE", "project.settings.production"
         )
+        
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
