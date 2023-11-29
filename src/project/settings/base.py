@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "rest_framework",
     # Internal Package
+    "project.product.apps.ProductConfig",
 ]
 
 MIDDLEWARE = [
