@@ -1,3 +1,41 @@
-from django.shortcuts import render
+from decimal import Decimal
 
-# Create your views here.
+from rest_framework import viewsets
+from rest_framework.response import Response
+
+from drf_spectacular.utils import extend_schema
+
+from .models import Product, Category, Brand
+from .serializers import ProductSerializer, CategorySerializer, BrandSerializer
+
+
+class CategoryView(viewsets.ViewSet):
+    """A simple viewset for viewing categories"""
+
+    queryset = Category.objects.all()
+
+    @extend_schema(request=CategorySerializer, responses=None)
+    def list(self, request):
+        serializer = CategorySerializer(self.queryset, many=True)
+        return Response(serializer.data)
+
+
+class BrandView(viewsets.ViewSet): 
+    """A simple viewset for viewing brands"""
+
+    queryset = Brand.objects.all()
+
+    @extend_schema(request=BrandSerializer, responses=None)
+    def list(self, request):
+        serializer = BrandSerializer(self.queryset, many=True)
+        return Response(serializer.data)
+    
+class ProductView(viewsets.ViewSet): 
+    """A simple viewset for viewing products"""
+
+    queryset = Product.objects.all()
+
+    @extend_schema(request=ProductSerializer, responses=None)
+    def list(self, request):
+        serializer = ProductSerializer(self.queryset, many=True)
+        return Response(serializer.data)

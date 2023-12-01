@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     # External Package
     "django_extensions",
     "rest_framework",
+    "drf_spectacular",
     # Internal Package
     "project.product.apps.ProductConfig",
 ]
@@ -116,4 +117,13 @@ REST_FRAMEWORK = {
     # ],
     # 'DEFAULT_AUTHENTICATION_CLASSES': [
     # ]
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'DRF eCommerce',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
 }
